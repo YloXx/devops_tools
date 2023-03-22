@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Define the domain to check
+echo "DNS en server checker by YloXx"
+echo "Fill in the domainname to check"
+read domain
+
 # Check if DirectAdmin is running
 if ! pgrep -x "directadmin" > /dev/null
 then
@@ -30,7 +35,35 @@ then
 fi
 
 # Check if DNS records are valid
-if ! named-checkzone example.com /etc/named.conf > /dev/null
+if ! named-checkzone "$domain" /etc/named.conf > /dev/null
 then
-    echo "DNS records for example.com are not valid"
+    echo "DNS records for $domain are not valid"
+fi
+
+# Check the DNS MX record
+echo "Checking the DNS MX record for $domain"
+if ! host -t MX "$domain" > /dev/null
+then
+    echo "The DNS MX record for $domain is not valid"
+fi
+
+# Check the DNS A record
+echo "Checking the DNS A record for $domain"
+if ! host -t A "$domain" > /dev/null
+then
+    echo "The DNS A record for $domain is not valid"
+fi
+
+# Check the DNS AAAA record
+echo "Checking the DNS AAAA record for $domain"
+if ! host -t AAAA "$domain" > /dev/null
+then
+    echo "The DNS AAAA record for $domain is not valid"
+fi
+
+# Check the DNS TXT record
+echo "Checking the DNS TXT record for $domain"
+if ! host -t TXT "$domain" > /dev/null
+then
+    echo "The DNS TXT record for $domain is not valid"
 fi
