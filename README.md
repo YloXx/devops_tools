@@ -3,6 +3,7 @@ a few tools to help you with your hosting solutions based on directadmin
 
 
 to run directly into centos to cleanup!
+
   curl -Ls https://raw.githubusercontent.com/YloXx/devops_tools/main/clean-centos.sh | sudo bash
 
 Trimming log files
