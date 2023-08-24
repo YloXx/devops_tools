@@ -7,8 +7,8 @@ else
   yum -y install yum-utils
 fi
 
-echo 'Trimming .log files larger than 50MB...'
-find /var -name "*.log" \( \( -size +50M -mtime +7 \) -o -mtime +30 \) -exec truncate {} --size 0 \;
+echo 'Trimming .log files larger than 10MB...'
+find /var -name "*.log" \( \( -size +10M -mtime +7 \) -o -mtime +30 \) -exec truncate {} --size 0 \;
 
 echo "Cleaning yum caches..."
 yum clean all
