@@ -44,4 +44,10 @@ rm -rf /home/*/.cache/* /root/.cache/*
 echo 'Cleaning CustomBuild...'
 rm -rf /usr/local/directadmin/custombuild_1.x
 
+echo 'Cleaning all directadmin user/reseller backups'
+rm -rf /home/backups/*
+
+//echo 'searching for 10 biggest directories and files:'
+//sudo du -a /home | sort -n -r | head -n 10
+
 echo "All Done! grtz YloXx"
